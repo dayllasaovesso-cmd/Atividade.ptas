@@ -13,7 +13,7 @@ const produtos = [
 { id: 1, nome: "Sabonete" },
 { id: 2, nome: "Monitor" },
 { id: 3, nome: "Cadeira Gamer" }
-]
+] 
 
 
 const server = http.createServer((req, res) => {
