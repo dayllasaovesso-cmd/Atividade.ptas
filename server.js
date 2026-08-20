@@ -35,7 +35,7 @@ res.statusCode = 200;
 return res.end(JSON.stringify(produtos));
 }
 
-res.end(JSON.stringify({ 'esta pagina é inexistente' }));
+res.end(JSON.stringify({ data:'esta pagina é inexistente' }));
 });
 
 server.listen(port, () => {
