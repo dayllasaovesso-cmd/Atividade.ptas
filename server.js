@@ -17,11 +17,13 @@ const produtos = [
 
 
 const server = http.createServer((req, res) => {
+console.log(`Metodo: ${req.method} | URL: ${req.url}`)
 const urlObj = new URL(req.url, `http://${req.headers.host}`)
-res.statusCode = 200;
-res.setHeader('Content-Type', 'application/json');
+res.statusCode = 404;
+res.setHeader('Content-Type', 'application/json'); //O código fica travado.
 
 if (req.method == "GET" && urlObj.pathname == "/contato") {
+res.statusCode = 200;
 return res.end(JSON.stringify({
 "numero_telefone": "67 99999-9999",
 "endereco": "Rua da Alegria, 99"
@@ -29,10 +31,11 @@ return res.end(JSON.stringify({
 }
 
 if (req.method == "GET" && urlObj.pathname == "/produtos") {
+res.statusCode = 200;
 return res.end(JSON.stringify(produtos));
 }
 
-res.end(JSON.stringify({ "data": "Página Inicial" }));
+res.end(JSON.stringify({ 'esta pagina é inexistente' }));
 });
 
 server.listen(port, () => {
