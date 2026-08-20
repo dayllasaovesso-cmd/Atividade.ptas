@@ -9,30 +9,14 @@ const status = {
     "date": new Date().toISOString()
 }
 
-const produtos = [
-    { id: 1, nome: "Sabonete" },
-    { id: 2, nome: "Monitor" },
-    { id: 3, nome: "Cadeira Gamer" }
-]
+server.on('request', (req, res) => {
+    console.log(`Requisição recebida! ${req.method} ${req.url}`);
+    console.log('data e hora: ${new date().toiSOString()')
 
+    res.statusCode = 201
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.end("recurso criado!");  
 
-const server = http.createServer((req, res) => {
-    const urlObj = new URL(req.url, `http://${req.headers.host}`)
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-
-    if (req.method == "GET" && urlObj.pathname == "/contato") {
-        return res.end(JSON.stringify({
-            "numero_telefone": "67 99999-9999",
-            "endereco": "Rua da Alegria, 99"
-        }));
-    }
-
-    if (req.method == "GET" && urlObj.pathname == "/produtos") {
-        return res.end(JSON.stringify(produtos));
-    }
-
-    res.end(JSON.stringify({ "data": "Página Inicial" }));
 });
 
 server.listen(port, () => {
